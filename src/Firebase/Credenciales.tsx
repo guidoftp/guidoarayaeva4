@@ -1,4 +1,4 @@
-import const firebaseConfig = {
+export const firebaseConfig = {
     apiKey: "AIzaSyDpGLjri43uzq4YZxJYNsYvdOHG3rzfLG4",
     authDomain: "eva4-fb2b4.firebaseapp.com",
     projectId: "eva4-fb2b4",
