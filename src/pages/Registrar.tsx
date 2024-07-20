@@ -79,7 +79,7 @@ export const Registrar = () =>{
                 </Form.Group>
                 */}
 
-                 {/* SELECT
+                 {/* RADIO BUTTON
                 <Form.Group>
                     <Form.Label>Raza: </Form.Label>
                     <Form.Control type="check" placeholder="Ingrese su raza favorita"
