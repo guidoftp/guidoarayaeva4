@@ -10,4 +10,5 @@ export interface Guerrero {
     //SELECT raza: string;
 
     saga:string;
+    key?:string;
 }
