@@ -15,13 +15,13 @@ export const obtenerGuerreros = async() => {
     let guerrero:Guerrero = {
         nombre: doc.data().nombre,
         edad: doc.data().edad,
-        email: doc.data().edad,
-        rut: doc.data().edad,
-        personaje: doc.data().edad,
-        habilidad: doc.data().edad,
+        email: doc.data().email,
+        rut: doc.data().rut,
+        personaje: doc.data().personaje,
+        habilidad: doc.data().habilidad,
         //opening
         //raza
-        saga: doc.data().edad,
+        saga: doc.data().saga,
         key: doc.id,
     }
     guerreros.push(guerrero)
