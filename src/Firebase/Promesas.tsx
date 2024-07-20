@@ -11,26 +11,27 @@ export const obtenerGuerreros = async() => {
     const querySnapshot = await getDocs(collection(db, "guerrero"));
     let guerreros:Guerrero[] = []
     querySnapshot.forEach((doc)=>{
-        let guerrero:Guerrero = {
-            nombre: doc.data().nombre,
-            edad: doc.data().edad,
-            email: doc.data().edad,
-            rut: doc.data().edad,
-            personaje: doc.data().edad,
-            habilidad: doc.data().edad,
-            //opening
-            //raza
-            saga: doc.data().edad,
-            key: doc.id,
-        }
-        guerreros.push(guerrero)
-    });
-    return guerreros
+
+    let guerrero:Guerrero = {
+        nombre: doc.data().nombre,
+        edad: doc.data().edad,
+        email: doc.data().edad,
+        rut: doc.data().edad,
+        personaje: doc.data().edad,
+        habilidad: doc.data().edad,
+        //opening
+        //raza
+        saga: doc.data().edad,
+        key: doc.id,
+    }
+    guerreros.push(guerrero)
+});
+return guerreros
 }
 
 export const obtenerGuerrero = async (key:string) => {
     const docRef = doc (db, "guerrero", key);
-    const docSnap = await getDocs (docRef);
+    const docSnap = await getDoc (docRef);
     if (docSnap.exists()){
         let guerrero:Guerrero = {
             nombre: docSnap.data().nombre,
