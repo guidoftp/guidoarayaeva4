@@ -1,5 +1,5 @@
 import { Guerrero } from "@/Interfaces/Interfaces";
-import { addDoc, collection, doc, getDoc, getDocs, updateDoc } from "firebase/firestore"
+import { addDoc, collection, doc, getDoc, getDocs, updateDoc, deleteDoc } from "firebase/firestore"
 import { db } from "./Firebase"
 
 
@@ -65,4 +65,8 @@ export const modificarGuerrero = async(guerrero:Guerrero)=>{
         //raza: guerrero.raza,
         saga:guerrero.saga,
     })
+}
+
+export const eliminarGuerrero = async(key:string) => {
+    await deleteDoc(doc(db, "persona", key));
 }

@@ -19,12 +19,11 @@ export const Modificar = () => {
                 if (g != undefined) {
                     setGuerrero(g);
                 } else {
-                    // Deberías manejar el caso donde no se encuentra el guerrero
                     console.log("Guerrero no encontrado");
                 }
             }).catch((e) => {
                 console.log(e);
-                alert("Hubo un problema al obtener el guerrero");
+                alert("Hubo un problema");
             });
         }
     }, [router.query.key]); // Asegúrate de pasar las dependencias correctas al useEffect

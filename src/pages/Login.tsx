@@ -1,17 +1,19 @@
+// pages/login.tsx
 import React, { useState } from "react";
 import { useRouter } from "next/router";
 import Button from "react-bootstrap/Button";
-import Form from 'react-bootstrap/Form';
+import Form from "react-bootstrap/Form";
 
 const Login = () => {
     const [usuario, setUsuario] = useState<string>("");
-    const [contrasenia, setContrasena] = useState<string>("");
+    const [contrasena, setContrasena] = useState<string>("");
     const router = useRouter();
 
     const handleLogin = () => {
-        if (usuario === "admin" && contrasenia === "admin") {
+        if (usuario === "admin" && contrasena === "admin") {
+            localStorage.setItem("isAuthenticated", "true");
             router.push("/");
-        } else if (usuario === "" && contrasenia === "") {
+        } else if (usuario === "" && contrasena === "") {
             router.push("/invitado");
         } else {
             alert("Usuario o contraseña incorrectos");
@@ -35,7 +37,7 @@ const Login = () => {
                 <Form.Control
                     type="password"
                     placeholder="Ingrese su contraseña"
-                    value={contrasenia}
+                    value={contrasena}
                     onChange={(e) => setContrasena(e.currentTarget.value)}
                 />
             </Form.Group>

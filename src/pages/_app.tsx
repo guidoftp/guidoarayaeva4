@@ -1,9 +1,20 @@
+import { useEffect } from "react";
+import { useRouter } from "next/router";
+import { AppProps } from "next/app";
 import 'bootstrap/dist/css/bootstrap.min.css';
-import '../styles/globals.css'; 
-import { AppProps } from 'next/app';
 
-function App({ Component, pageProps }: AppProps) {
-  return <Component {...pageProps} />;
+function MyApp({ Component, pageProps }: AppProps) {
+    const router = useRouter();
+
+    useEffect(() => {
+        const isAuthenticated = localStorage.getItem("isAuthenticated");
+
+        if (!isAuthenticated && router.pathname !== "/Login") {
+            router.push("/Login");
+        }
+    }, [router]);
+
+    return <Component {...pageProps} />;
 }
 
-export default App;
+export default MyApp;
