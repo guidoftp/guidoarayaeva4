@@ -50,9 +50,9 @@ export const Datos = () => {
                                 <td>{g.saga}</td>
                                 <Link href={{pathname:"Modificar",query:{key:g.key}}}>
                                     <Button variant="warning"><GrEdit /></Button>
+                                    <Button variant="danger"><AiOutlineUserDelete /></Button>
                                 </Link>
 
-                                <Button variant="danger"><AiOutlineUserDelete /></Button>
                             </tr>
                         )
 

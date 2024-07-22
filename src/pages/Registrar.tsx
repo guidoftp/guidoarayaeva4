@@ -69,6 +69,7 @@ export const Registrar = () =>{
                     <Form.Text></Form.Text>
                 </Form.Group>
 
+                
                 {/* CHECKBOX
                 <Form.Group>
                     <Form.Label>Opening: </Form.Label>
