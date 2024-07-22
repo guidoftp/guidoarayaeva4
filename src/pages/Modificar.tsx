@@ -26,11 +26,11 @@ export const Modificar = () => {
                 alert("Hubo un problema");
             });
         }
-    }, [router.query.key]); // Asegúrate de pasar las dependencias correctas al useEffect
+    }, [router.query.key]);
 
     const handleModificar = () => {
         modificarGuerrero(guerrero).then(() => {
-            alert("Se ha modificado con éxito");
+            alert("Se ha modificado con exito");
         }).catch((e) => {
             console.log(e);
             alert("Hubo un problema");
