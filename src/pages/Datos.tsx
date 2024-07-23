@@ -9,40 +9,42 @@ import { AiOutlineUserDelete } from "react-icons/ai";
 export const Datos = () => {
     const [guerreros, setGuerreros] = useState<Guerrero[]>([]);
     const [showModal, setShowModal] = useState<boolean>(false);
-    const [guerreroToDelete, setGuerreroToDelete] = useState<string| null>(null);
+    const [guerreroAEliminar, setGuerreroAEliminar] = useState<Guerrero | undefined>(undefined);
 
     useEffect(() => {
         obtenerGuerreros().then((guerreros) => {
             console.log(guerreros);
             setGuerreros(guerreros);
         }).catch((e) => {
-            alert("No se logra cargar los datos");
+            alert("No se logro cargar los datos");
             console.log(e);
         });
     }, []);
 
-    const handleShowModal = (key: string) => {
-        setGuerreroToDelete(key);
+    const handleShowModal = (guerrero: Guerrero) => {
+        setGuerreroAEliminar(guerrero);
         setShowModal(true);
     };
 
     const handleDelete = async () => {
-        if (guerreroToDelete) {
+        if (guerreroAEliminar) {
             try {
-                await eliminarGuerrero(guerreroToDelete);
-                setGuerreros(guerreros.filter(g => g.key !== guerreroToDelete));
-                alert("Guerrero eliminado con exito");
+                await eliminarGuerrero(g.key);
+                setGuerreros(guerreros.filter(g => g.key !== guerreroAEliminar.key));
+                alert("Se ha elimnado el Guerrero ");
             } catch (e) {
                 console.log(e);
                 alert("Hubo un problema al eliminar el guerrero");
             } finally {
                 setShowModal(false);
+                setGuerreroAEliminar(undefined);
             }
         }
     };
 
     const handleCloseModal = () => {
         setShowModal(false);
+        setGuerreroAEliminar(undefined); 
     };
 
     return (
@@ -56,8 +58,6 @@ export const Datos = () => {
                         <th>Rut</th>
                         <th>Personaje</th>
                         <th>Habilidad</th>
-                        {/* <th>Opening</th>
-                        <th>Raza</th> */}
                         <th>Saga</th>
                         <th>Acciones</th>
                     </tr>
@@ -71,8 +71,6 @@ export const Datos = () => {
                             <td>{g.rut}</td>
                             <td>{g.personaje}</td>
                             <td>{g.habilidad}</td>
-                            {/* <td>{g.opening}</td>
-                            <td>{g.raza}</td> */}
                             <td>{g.saga}</td>
                             <td>
                                 <Link href={{ pathname: "Modificar", query: { key: g.key } }}>
@@ -80,7 +78,7 @@ export const Datos = () => {
                                 </Link>
                                 <Button 
                                     variant="danger" 
-                                    onClick={() => handleShowModal(g.key)}
+                                    onClick={() => handleShowModal(g)}
                                 >
                                     <AiOutlineUserDelete />
                                 </Button>
@@ -90,13 +88,13 @@ export const Datos = () => {
                 </tbody>
             </Table>
 
-            {/* Modal de Confirmación */}
+            
             <Modal show={showModal} onHide={handleCloseModal}>
                 <Modal.Header closeButton>
-                    <Modal.Title>Confirmar Eliminación</Modal.Title>
+                    <Modal.Title>Confirmar Eliminacion</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-                    ¿Estás seguro de que deseas eliminar a este guerrero?
+                    ¿seguro de que deseas eliminar a este guerrero?
                 </Modal.Body>
                 <Modal.Footer>
                     <Button variant="secondary" onClick={handleCloseModal}>

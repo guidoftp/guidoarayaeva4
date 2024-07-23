@@ -1,12 +1,20 @@
 import Link from "next/link";
+import { FaInstagram } from "react-icons/fa6";
+import { FaXTwitter } from "react-icons/fa6";
+import { FaFacebookSquare } from "react-icons/fa";
+import { GiDragonBalls } from "react-icons/gi";
+import { GrUserAdmin } from "react-icons/gr";
 
 export default function Invitado() {
     return (
         <>
             <nav>
-                <Link href="/Registrar">Registrar Guerrero Z</Link><br />
+            <GiDragonBalls />
+
+                <Link href="/Registrar">Registrar Guerrero Z</Link><br /><GiDragonBalls />
                 <Link href="/Datos">Datos Guerrero Z</Link><br />
-                <Link href="/Login">Administrador</Link><br />
+                <GrUserAdmin /><Link href="/Login">Administrador</Link><br />
+                
             </nav>
             <h1>Bienvenidos Invitado a un FanPage de Dragon ball Z</h1><br />
 
@@ -39,9 +47,9 @@ export default function Invitado() {
             <footer>
                 <center><p>Síguenos en nuestras redes sociales</p></center>
                 <ul>
-                    <center><a href="https://www.instagram.com/dragonballsuper/?hl=es">Instagram</a></center>
-                    <center><a href="https://twitter.com/DB_official_en?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor">Twitter</a></center>
-                    <center><a href="https://www.facebook.com/DragonBallZ/?locale=es_LA">Facebook</a></center>
+                <center><FaInstagram /></center><center><a href="https://www.instagram.com/dragonballsuper/?hl=es">Instagram</a></center>
+                <center><FaXTwitter /></center><center><a href="https://twitter.com/DB_official_en?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor">Twitter</a></center>
+                <center><FaFacebookSquare /></center><center><a href="https://www.facebook.com/DragonBallZ/?locale=es_LA">Facebook</a></center>
                 </ul>
             </footer>
         </>
