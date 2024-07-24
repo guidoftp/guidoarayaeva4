@@ -5,21 +5,27 @@ import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 
 const Login = () => {
+    //Estados para resguardar al usuario y contrasenia ADMIN
     const [usuario, setUsuario] = useState<string>("");
     const [contrasena, setContrasena] = useState<string>("");
+    //hook para la navegacion
     const router = useRouter();
 
+    //funcion q manejara el inicio sesion del usuario
     const handleLogin = () => {
+        //verefica si el ususario y contrasenia son correctos
         if (usuario === "admin" && contrasena === "admin") {
+            //si son correctos, guarda la autenticacion y envia al usuario a la pagina principal
             localStorage.setItem("isAuthenticated", "true");
             router.push("/");
         } else if (usuario === "" && contrasena === "") {
-            router.push("/invitado");
+            //si el usuario y contrasenia estan vacios, da error
         } else {
             alert("Usuario o contraseña incorrectos");
         }
     };
 
+    //lo q vera el usuario sera un usuario y contrasenia a ingresar
     return (
         <Form>
             <Form.Group>

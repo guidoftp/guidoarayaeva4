@@ -7,46 +7,54 @@ import { GrEdit } from "react-icons/gr";
 import { AiOutlineUserDelete } from "react-icons/ai";
 
 export const Datos = () => {
+    //Estado para almacenar la lista de gurerros
     const [guerreros, setGuerreros] = useState<Guerrero[]>([]);
+    //estado para poder visualizar el modal de confirmacion en pantalla
     const [showModal, setShowModal] = useState<boolean>(false);
+    //y estado para eliminar al guerrero
     const [guerreroAEliminar, setGuerreroAEliminar] = useState<Guerrero | undefined>(undefined);
 
+    //useeffect cargara los datos de cada guerrero
     useEffect(() => {
         obtenerGuerreros().then((guerreros) => {
-            console.log(guerreros);
-            setGuerreros(guerreros);
+            console.log(guerreros);//imprime a los gerreros
+            setGuerreros(guerreros); //actualizara los datos
         }).catch((e) => {
-            alert("No se logro cargar los datos");
-            console.log(e);
+            alert("No se logro cargar los datos"); //se mostrara un mensaje de alerta en caso de algun probmena
+            console.log(e);//imprime el error
         });
     }, []);
 
+    //Funcion para mostrar el modal de eliminar
     const handleShowModal = (guerrero: Guerrero) => {
-        setGuerreroAEliminar(guerrero);
-        setShowModal(true);
+        setGuerreroAEliminar(guerrero); //se estable el guerrero que desea eliminar
+        setShowModal(true); //se aprecia el modal
     };
 
+    //Funcion para eliminar guerrero
     const handleDelete = async () => {
         if (guerreroAEliminar) {
             try {
-                await eliminarGuerrero(g.key);
-                setGuerreros(guerreros.filter(g => g.key !== guerreroAEliminar.key));
-                alert("Se ha elimnado el Guerrero ");
+                await eliminarGuerrero(g.key); //no m elimina el guerrero
+                setGuerreros(guerreros.filter(g => g.key !== guerreroAEliminar.key)); //se deberia actualizar la lista de guerrero
+                alert("Se ha elimnado el Guerrero "); //imprime un mensaje exitoso
             } catch (e) {
-                console.log(e);
-                alert("Hubo un problema al eliminar el guerrero");
+                console.log(e); //imprime un error en la pagina
+                alert("Hubo un problema al eliminar el guerrero"); //se muestra un mensaje en pnatalla
             } finally {
-                setShowModal(false);
-                setGuerreroAEliminar(undefined);
+                setShowModal(false); //aqui se cierra el modal
+                setGuerreroAEliminar(undefined); //y se elimina el guerreo
             }
         }
     };
 
+    //Funcion para cerrar el modal
     const handleCloseModal = () => {
-        setShowModal(false);
+        setShowModal(false); //cierra el modal
         setGuerreroAEliminar(undefined); 
     };
 
+    //TABLA 
     return (
         <>
             <Table striped bordered hover>

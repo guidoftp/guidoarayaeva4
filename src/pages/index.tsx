@@ -1,10 +1,11 @@
 import Link from "next/link";
-import { FaInstagram } from "react-icons/fa6";
-import { FaXTwitter } from "react-icons/fa6";
-import { FaFacebookSquare } from "react-icons/fa";
-import { GiDragonBalls } from "react-icons/gi";
-import { GrUserAdmin } from "react-icons/gr";
+import { FaInstagram } from "react-icons/fa6"; //icono logo de Instagram
+import { FaXTwitter } from "react-icons/fa6"; //icono logo de twitter
+import { FaFacebookSquare } from "react-icons/fa"; //icono logo facebook
+import { GiDragonBalls } from "react-icons/gi"; //icono de esfera del dragon
+import { GrUserAdmin } from "react-icons/gr"; //icono de admin
 
+//pagina que vera el usuario
 export default function Invitado() {
     return (
         <>

@@ -1,3 +1,4 @@
+//en el interface se define los camposd del "Guerrero"
 export interface Guerrero {
     nombre: string;
     edad: number;

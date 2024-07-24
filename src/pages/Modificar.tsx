@@ -6,18 +6,20 @@ import { Button, Form } from "react-bootstrap";
 import { useEffect, useState } from "react";
 
 export const Modificar = () => {
-    const [guerrero, setGuerrero] = useState<Guerrero>(initialstateGuerrero);
+    const [guerrero, setGuerrero] = useState<Guerrero>(initialstateGuerrero); //estado inicial de la colecion guerrero
+    //funcion para cambiar los datos del formulario
     const handleGuerrero = (name: string, value: string) => {
-        setGuerrero({ ...guerrero, [name]: value });
+        setGuerrero({ ...guerrero, [name]: value }); //actualozara el estado del guerero
     };
-    const router = useRouter();
+    const router = useRouter(); //hook para la navegacion
 
+    //el useeffect obtendra los datos del guerrero cuando se carge 
     useEffect(() => {
-        const key = router.query.key;
+        const key = router.query.key; //obtendra la clave del guerrero desde la URL
         if (typeof key == "string") {
             obtenerGuerrero(key).then((g) => {
                 if (g != undefined) {
-                    setGuerrero(g);
+                    setGuerrero(g); //si se encuentra, actualiza el estado
                 } else {
                     console.log("Guerrero no encontrado");
                 }
@@ -26,8 +28,9 @@ export const Modificar = () => {
                 alert("Hubo un problema");
             });
         }
-    }, [router.query.key]);
+    }, [router.query.key]); 
 
+    //funcion para modificar al guerrero
     const handleModificar = () => {
         modificarGuerrero(guerrero).then(() => {
             alert("Se ha modificado con exito");
@@ -37,6 +40,7 @@ export const Modificar = () => {
         });
     };
 
+    //tabla q vera el usuario, y dependiendo de lo q qiera modificar salgra la respuesta q estaba obteniedno
     return (
         <>
             <Form>

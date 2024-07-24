@@ -7,9 +7,12 @@ import { registrarGuerrero } from "@/Firebase/Promesas";
 
 export const Registrar = () =>{
     const [guerrero, setGuerrero] = useState<Guerrero>(initialstateGuerrero)
+    //aqui maneja los cambios en los campos del form
     const handleGuerrero = (name:string, value:string) =>{
         setGuerrero({...guerrero,[name]:value})
     }
+
+    //aqui registra
     const handleRegistrar = () => {
         registrarGuerrero(guerrero).then(()=>{
             alert("Se ha registrado con exito")
@@ -18,6 +21,8 @@ export const Registrar = () =>{
             console.log(e)
         })
     }
+
+    //aqui los campos q pedira el form para registrar al guerrero
     return (
         <>
             <Form>
